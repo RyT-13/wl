@@ -1,7 +1,8 @@
 <h1>Welcome</h1>
 <p>Wish list.</p>
 
-<p>
-  <a href="#" role="button">Registration</a>
-  <a href="#" role="button">Log In</a>
-</p>
+<% if user_signed_in? %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path %>
+  <%= link_to "Log In", new_user_session_path %>
+  <% end %>
