@@ -1,0 +1,13 @@
+<%= link_to "LISTS", lists_path %>
+<br><br>
+
+<strong>Title: </strong>
+<%= @list.title %>
+
+<br>
+
+<strong>Description</strong>
+<%= @list.description %>
+
+<br>
+<%= link_to "Edit", edit_list_path(@list) %>

@@ -1,0 +1,15 @@
+<h1>LISTSSSSSSS</h1>
+
+<%= link_to "Create list", new_list_path %>
+
+<table>
+  <% @lists.each do |list| %>
+  <tr>
+    <td><b><%= list.title %></b></td>
+    <td><%= list.description %></td>
+    <td><%= link_to "Show", list_path(list) %></td>
+    <td><%= link_to "Edit", edit_list_path(list) %></td>
+    <td><%= link_to "Delete", list_path(list), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+  </tr>
+  <% end %>
+</table>
