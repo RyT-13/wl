@@ -1,6 +1,8 @@
 class ListsController < ApplicationController
+  before_action :authenticate_user!, except: [:new]
+
   def index
-    @lists = List.all
+    @lists = current_user.lists
   end
 
   def new
@@ -8,15 +10,15 @@ class ListsController < ApplicationController
   end
 
   def edit
-    @list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
   end
 
   def show
-    @list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
   end
 
   def create
-    @list = List.new(list_params)
+    @list = current_user.lists.build(list_params)
 
     if @list.save
       redirect_to @list
@@ -28,7 +30,7 @@ class ListsController < ApplicationController
 
 
   def update
-    @list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
 
     if @list.update(list_params)
       redirect_to @list
@@ -38,7 +40,7 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
     @list.destroy
     redirect_to lists_path
   end
