@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :authenticate_user!, except: [:new]
 
   def index
-    @lists = current_user.lists
+    @lists = current_user.lists.page(params[:page])
   end
 
   def new
@@ -15,6 +15,7 @@ class ListsController < ApplicationController
 
   def show
     @list = current_user.lists.find(params[:id])
+    @wishes = @list.wishes.page(params[:page])
   end
 
   def create

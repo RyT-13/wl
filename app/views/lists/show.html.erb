@@ -15,7 +15,7 @@
 <br><br>
 <%= link_to "New wish", new_list_wish_path(@list) %>
 <br>
-<% @list.wishes.each do |wish| %>
+<% @wishes.each do |wish| %>
   <p>
     <strong>Title: </strong>
     <%= wish.title %>
@@ -30,3 +30,5 @@
     <%= link_to "Delete",  list_wish_path(wish.list, wish), method: :delete, data: {confirm: 'Are you sure?'} %>
   </p>
 <% end %>
+
+<%= paginate @wishes %>
